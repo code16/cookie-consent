@@ -1,0 +1,34 @@
+{
+  "name": "code16/cookie-consent",
+  "description": "Cookie consent bar & manage modal",
+  "authors": [{
+    "name": "Philippe Lonchampt",
+    "email": "philippe@code16.fr"
+  }, {
+    "name": "Antoine Guingand",
+    "email": "antoine@code16.fr"
+  }],
+  "require": {
+    "php" : "^7.2",
+    "illuminate/support": "~5.8.0|^6.0",
+    "illuminate/view": "~5.8.0|^6.0",
+    "illuminate/cookie": "~5.8.0|^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Code16\\CookieConsent\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Code16\\CookieConsent\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Code16\\CookieConsent\\CookieConsentServiceProvider"
+      ]
+    }
+  }
+}

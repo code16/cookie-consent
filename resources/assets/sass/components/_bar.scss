@@ -1,0 +1,27 @@
+.cc-cookie-bar {
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 999;
+  width: 100%;
+  transition: transform .4s ease-in;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding-left: calc(100vw - 100%);
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  background: white;
+  box-shadow: 0 -2px 1px rgba(0,0,0,0.0375),
+  0 -4px 2px rgba(0,0,0,0.025),
+  0 -8px 4px rgba(0,0,0,0.0125);
+
+  &.v-enter, &.v-leave-to {
+    transform: translate(0, 100%);
+  }
+}
