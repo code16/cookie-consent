@@ -13,4 +13,6 @@ return [
             'required' => true,
         ],
     ],
+
+    'page_url' => '/cookies',
 ];

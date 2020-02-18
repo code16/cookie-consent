@@ -24,7 +24,6 @@ In your blade layout
 ```blade
 <head>
     {{-- ... --}}
-
     @cookies
         <script>
           {{-- some injected cookies --}}
@@ -33,7 +32,7 @@ In your blade layout
 </head>
 
 <body>
-    {{-- ... --}}
+    {{-- end of the body --}}
     @include('cookieConsent::index')
 </body>
 ```
@@ -85,4 +84,12 @@ To provide explanation texts in the manage dialog, add content to the lang file:
         ],
     ]
 ];
+```
+
+### Show the manage modal from a link (e.g. cookies page)
+In the page:
+```blade
+    @section('content')
+        <a href="#manage-cookies">Open manage cookies modal</a>
+    @endsection
 ```

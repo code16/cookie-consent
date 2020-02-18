@@ -25,21 +25,21 @@ class CookieConsentServiceProvider extends ServiceProvider
             __DIR__.'/../resources/lang' => base_path('resources/lang/vendor/cookieConsent'),
         ], 'lang');
 
+        $this->publishes([
+            __DIR__.'/../resources/assets/dist' => public_path('vendor/cookie-consent')
+        ], 'assets');
+
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'cookieConsent');
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'cookieConsent');
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
-        $this->publishes([
-            __DIR__.'/../resources/assets/dist' => public_path('vendor/cookie-consent')
-        ], 'assets');
-
         $this->app->resolving(EncryptCookies::class, function (EncryptCookies $encryptCookies) {
             $encryptCookies->disableFor(config('cookie-consent.cookie_name'));
         });
 
-        $this->app['view']->composer('cookieConsent::index', function (View $view) {
+        $this->app['view']->composer(['cookieConsent::index', 'cookieConsent::manage'], function (View $view) {
             $alreadyConsentedWithCookies = Cookie::has(config('cookie-consent.cookie_name'));
 
             $categories = collect(config('cookie-consent.cookie_categories'))

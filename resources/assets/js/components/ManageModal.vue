@@ -1,5 +1,12 @@
 <template>
-    <b-modal id="manage-cookies" modal-class="cc-manage-modal" v-model="visible" :title="title" @ok="handleOkClicked">
+    <b-modal
+        id="manage-cookies"
+        modal-class="cc-manage-modal"
+        v-model="visible"
+        :title="title"
+        @ok="handleOkClicked"
+        @hide="handleHide"
+    >
         <template v-slot:modal-title>
             <slot name="title" />
         </template>
@@ -14,7 +21,11 @@
             :categories="categories"
             :required-label="requiredLabel"
             ref="form"
-        />
+        >
+            <template v-slot:link>
+
+            </template>
+        </ManageForm>
 
         <template v-slot:modal-footer="{ ok }">
             <button type="submit" class="btn btn-primary" @click="ok">
@@ -27,6 +38,14 @@
 <script>
     import ManageForm from './ManageForm';
     import { BModal } from 'bootstrap-vue';
+
+    function resetLocationtHash() {
+        if(history && history.replaceState) {
+            history.replaceState(null, null, `${window.location.pathname}${window.location.search}`);
+        } else {
+            location.hash = '';
+        }
+    }
 
     export default {
         components: {
@@ -47,7 +66,24 @@
         methods: {
             handleOkClicked() {
                 this.$refs.form.submit();
-            }
+            },
+            handleHide() {
+                if(location.hash === '#manage-cookies') {
+                    resetLocationtHash();
+                }
+            },
+            init() {
+                if(location.hash === '#manage-cookies') {
+                    this.visible = true;
+                }
+            },
+        },
+        created() {
+            this.init();
+            window.addEventListener('hashchange', this.init);
+        },
+        destroyed() {
+            document.removeEventListener('hashchange', this.init);
         },
     }
 </script>

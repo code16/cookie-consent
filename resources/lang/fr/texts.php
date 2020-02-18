@@ -10,6 +10,7 @@ return [
         'ok_button' => 'Enregistrer',
         'cancel_button' => 'Annuler',
         'required_label' => '(obligatoire)',
+        'link_label' => 'En savoir plus',
         'categories' => [
             'system' => [
                 'title' => 'Cookies de fonctionnement',
