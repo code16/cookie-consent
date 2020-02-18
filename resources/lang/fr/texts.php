@@ -9,6 +9,7 @@ return [
         'description' => 'Introduction sur les cookies',
         'ok_button' => 'Enregistrer',
         'cancel_button' => 'Annuler',
+        'required_label' => '(obligatoire)',
         'categories' => [
             'system' => [
                 'title' => 'Cookies de fonctionnement',
