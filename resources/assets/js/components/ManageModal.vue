@@ -12,13 +12,11 @@
         <ManageForm
             :endpoint="endpoint"
             :categories="categories"
+            :required-label="requiredLabel"
             ref="form"
         />
 
-        <template v-slot:modal-footer="{ ok, cancel }">
-<!--            <button type="button" class="btn btn-secondary" @click="cancel">-->
-<!--                <slot name="cancel-button" />-->
-<!--            </button>-->
+        <template v-slot:modal-footer="{ ok }">
             <button type="submit" class="btn btn-primary" @click="ok">
                 <slot name="ok-button" />
             </button>
@@ -39,6 +37,7 @@
             endpoint: String,
             categories: Object,
             title: String,
+            requiredLabel: String,
         },
         data() {
             return {

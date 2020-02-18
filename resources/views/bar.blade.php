@@ -2,7 +2,6 @@
 <cookie-consent-bar
     endpoint="{{ route('cookie-consent') }}"
     :manage="{{ json_encode($hasManage) }}"
-    v-cloak
 >
     <template v-slot:message>
         {!! trans('cookieConsent::texts.message') !!}

@@ -15,7 +15,12 @@
                             value="1"
                         >
                         <label class="custom-control-label w-100" :for="checkboxKey(category)">
-                            <span class="cc-manage-form__item-title">{{ category.title }}</span>
+                            <span class="cc-manage-form__item-title">
+                                {{ category.title }}
+                                <template v-if="category.required">
+                                    <span class="cc-manage-form__required-label">{{ requiredLabel }}</span>
+                                </template>
+                            </span>
                             <span class="cc-manage-form__item-description">{{ category.description }}</span>
                         </label>
                     </div>
@@ -32,7 +37,8 @@
                 type: String,
                 required: true,
             },
-            categories: Object
+            categories: Object,
+            requiredLabel: String,
         },
         methods: {
             itemClasses(category) {
