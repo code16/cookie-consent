@@ -44,13 +44,18 @@ class CookieConsentServiceProvider extends ServiceProvider
 
             $categories = collect(config('cookie-consent.cookie_categories'))
                 ->map(function ($category, $categoryKey) {
-                    $texts = trans("cookieConsent::texts.manage.categories.{$categoryKey}");
+                    $langKey = "cookieConsent::texts.manage.categories.{$categoryKey}";
                     return array_merge($category, [
-                        "value" => (new CookieConsent())->getValueFor($categoryKey, true),
-                        "title" => $texts['title'],
-                        "description" => $texts['description'],
+                        "title" => trans("{$langKey}.title"),
+                        "description" => trans("{$langKey}.description"),
                         "key" => $categoryKey,
                     ]);
+                })
+                ->values();
+
+            $value = collect(config('cookie-consent.cookie_categories'))
+                ->map(function ($category, $categoryKey) {
+                    return (new CookieConsent())->getValueFor($categoryKey, true);
                 });
 
             $hasManage = $categories->some(function ($category) {
@@ -58,7 +63,7 @@ class CookieConsentServiceProvider extends ServiceProvider
                 return !$isRequired;
             });
 
-            $view->with(compact('alreadyConsentedWithCookies', 'categories', 'hasManage'));
+            $view->with(compact('alreadyConsentedWithCookies', 'value', 'categories', 'hasManage'));
         });
 
         Blade::if('cookies', function ($categoryKey = null) {

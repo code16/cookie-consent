@@ -1,6 +1,6 @@
 
 @if(config('cookie-consent.enabled'))
-    <div id="cookie-consent" v-cloak>
+    <div id="cookie-consent" class="cookie-consent" style="display: none">
         @if(!$alreadyConsentedWithCookies)
             @include('cookieConsent::bar')
         @endif

@@ -7,10 +7,13 @@ return [
     'manage' => [
         'title' => 'Gérer les cookies',
         'description' => 'Introduction sur les cookies',
+
         'ok_button' => 'Enregistrer',
         'cancel_button' => 'Annuler',
+        'link_label' => 'en savoir plus',
+
         'required_label' => '(obligatoire)',
-        'link_label' => 'En savoir plus',
+        'anonymize_checkbox' => 'Autoriser un cookie anonyme',
         'categories' => [
             'system' => [
                 'title' => 'Cookies de fonctionnement',

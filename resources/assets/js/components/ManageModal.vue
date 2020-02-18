@@ -15,17 +15,14 @@
             <slot />
         </div>
 
-
         <ManageForm
             :endpoint="endpoint"
             :categories="categories"
+            :value="value"
             :required-label="requiredLabel"
+            :anonymize-label="anonymizeLabel"
             ref="form"
-        >
-            <template v-slot:link>
-
-            </template>
-        </ManageForm>
+        />
 
         <template v-slot:modal-footer="{ ok }">
             <button type="submit" class="btn btn-primary" @click="ok">
@@ -54,9 +51,11 @@
         },
         props: {
             endpoint: String,
-            categories: Object,
+            value: Object,
+            categories: Array,
             title: String,
             requiredLabel: String,
+            anonymizeLabel: String,
         },
         data() {
             return {

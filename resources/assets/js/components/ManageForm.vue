@@ -11,10 +11,10 @@
                             :id="checkboxKey(category)"
                             :disabled="isDisabled(category)"
                             :name="category.key"
-                            :checked="category.value"
+                            v-model="currentValue[category.key]"
                             value="1"
                         >
-                        <label class="custom-control-label w-100" :for="checkboxKey(category)">
+                        <label class="custom-control-label cc-manage-form__item-label w-100" :for="checkboxKey(category)">
                             <span class="cc-manage-form__item-title">
                                 {{ category.title }}
                                 <template v-if="category.required">
@@ -24,6 +24,23 @@
                             <span class="cc-manage-form__item-description">{{ category.description }}</span>
                         </label>
                     </div>
+                    <template v-if="category.anonymizable && !isChecked(category)">
+                        <div class="custom-control custom-checkbox mt-3">
+                            <input type="hidden" :name="category.key" value="0">
+                            <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                :id="checkboxKey(category, 'anon')"
+                                :disabled="isDisabled(category)"
+                                :name="category.key"
+                                checked
+                                value="2"
+                            >
+                            <label class="custom-control-label cc-manage-form__item-label w-100" :for="checkboxKey(category, 'anon')">
+                                <span class="cc-manage-form__item-title">{{ anonymizeLabel }}</span>
+                            </label>
+                        </div>
+                    </template>
                 </div>
             </template>
         </div>
@@ -37,8 +54,15 @@
                 type: String,
                 required: true,
             },
-            categories: Object,
+            categories: Array,
+            value: Object,
             requiredLabel: String,
+            anonymizeLabel: String,
+        },
+        data() {
+            return {
+                currentValue: { ...this.value },
+            }
         },
         methods: {
             itemClasses(category) {
@@ -46,8 +70,11 @@
                     'text-muted': this.isDisabled(category),
                 }
             },
-            checkboxKey(category) {
-                return `manage-cookies-${category.key}`;
+            checkboxKey(category, key) {
+                return `manage-cookies-${category.key}${key ? `-${key}` : ''}`;
+            },
+            isChecked(category) {
+                return this.currentValue[category.key];
             },
             isDisabled(category) {
                 return category.required;

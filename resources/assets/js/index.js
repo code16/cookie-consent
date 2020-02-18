@@ -9,4 +9,7 @@ new Vue({
         'cookie-consent-bar': Bar,
         'cookie-manage-modal': ManageModal,
     },
+    mounted() {
+        this.$el.style.display = '';
+    }
 });

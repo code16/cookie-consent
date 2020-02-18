@@ -2,10 +2,12 @@
   &__description {
     font-size: .875em;
   }
+  &__item-label {
+    text-transform: none;
+  }
   &__item-title {
     display: block;
     font-size: 1em;
-    line-height: 1.2;
     margin-bottom: .25rem;
   }
   &__item-description {
