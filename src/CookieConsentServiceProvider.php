@@ -31,6 +31,10 @@ class CookieConsentServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
+        $this->publishes([
+            __DIR__.'/../resources/assets/dist' => public_path('vendor/cookie-consent')
+        ], 'assets');
+
         $this->app->resolving(EncryptCookies::class, function (EncryptCookies $encryptCookies) {
             $encryptCookies->disableFor(config('cookie-consent.cookie_name'));
         });
@@ -57,8 +61,10 @@ class CookieConsentServiceProvider extends ServiceProvider
             $view->with(compact('alreadyConsentedWithCookies', 'categories', 'hasManage'));
         });
 
-        Blade::if('cookies', function ($categoryKey) {
-            return (new CookieConsent())->getValueFor($categoryKey, false);
+        Blade::if('cookies', function ($categoryKey = null) {
+            return $categoryKey
+                ? (new CookieConsent())->getValueFor($categoryKey, false)
+                : Cookie::has(config('cookie-consent.cookie_name'));
         });
     }
 
