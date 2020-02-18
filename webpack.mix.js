@@ -8,3 +8,7 @@ mix.js('resources/assets/js/index.js', 'cookie-consent.js')
             extractComments: false,
         }
     });
+
+if(mix.inProduction()) {
+    mix.version();
+}
