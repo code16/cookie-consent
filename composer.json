@@ -4,15 +4,23 @@
   "authors": [{
     "name": "Philippe Lonchampt",
     "email": "philippe@code16.fr"
-  }, {
-    "name": "Antoine Guingand",
-    "email": "antoine@code16.fr"
-  }],
+  },
+    {
+      "name": "Antoine Guingand",
+      "email": "antoine@code16.fr"
+    }
+  ],
   "require": {
-    "php" : "^7.2",
+    "php": "^7.2",
     "illuminate/support": "~5.8.0|^6.0",
     "illuminate/view": "~5.8.0|^6.0",
     "illuminate/cookie": "~5.8.0|^6.0"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "~1.4",
+    "mockery/mockery": "1.3.*",
+    "phpunit/phpunit": "~8.0",
+    "orchestra/testbench": "4.*"
   },
   "autoload": {
     "psr-4": {

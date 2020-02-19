@@ -1,27 +1,27 @@
 <?php
 
 return [
-    'message' => "Ce site nécessite l'autorisation de cookies pour fonctionner correctement.",
-    'manage_button' => 'Gérer les cookies',
+    'message' => "Ce site nécessite l'utilisation de cookies pour fonctionner.",
+    'manage_button' => 'Paramétrer mes choix',
     'accept_button' => 'Accepter',
     'manage' => [
-        'title' => 'Gérer les cookies',
-        'description' => 'Introduction sur les cookies',
+        'title' => 'Paramétrer mes choix concernant les cookies utilisés sur ce site',
+        'description' => 'Les cookies utilisés sur ce site sont listés ci-dessous',
 
         'ok_button' => 'Enregistrer',
         'cancel_button' => 'Annuler',
         'link_label' => 'en savoir plus',
 
         'required_label' => '(obligatoire)',
-        'anonymize_checkbox' => 'Autoriser un cookie anonyme',
+        'anonymize_checkbox' => 'Autoriser un cookie anonymisé',
         'categories' => [
             'system' => [
-                'title' => 'Cookies de fonctionnement',
-                'description' => "Texte explicatif sur les cookies de fonctionnement",
+                'title' => 'Cookies requis pour la navigation',
+                'description' => "Ces cookies sont techniques et nécessaires au fonctionnement du site.",
             ],
             'analytics' => [
-                'title' => 'Cookies analytics',
-                'description' => "Texte explicatif sur les cookies analytics",
+                'title' => 'Cookies de suivi statistique',
+                'description' => "Ces cookies permettent de suivre votre progression sur le site, ce qui nous permet d’améliorer son fonctionnement ensuite.",
             ],
         ],
     ],

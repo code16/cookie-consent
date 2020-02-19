@@ -2,10 +2,9 @@
 
 namespace Code16\CookieConsent;
 
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Contracts\View\View;
-use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\ServiceProvider;
 
 class CookieConsentServiceProvider extends ServiceProvider
@@ -29,46 +28,21 @@ class CookieConsentServiceProvider extends ServiceProvider
             __DIR__.'/../resources/assets/dist' => public_path('vendor/cookie-consent')
         ], 'assets');
 
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'cookieConsent');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'cookieConsent');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'cookieConsent');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'cookieConsent');
 
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->app->resolving(EncryptCookies::class, function (EncryptCookies $encryptCookies) {
             $encryptCookies->disableFor(config('cookie-consent.cookie_name'));
         });
 
-        $this->app['view']->composer(['cookieConsent::index', 'cookieConsent::manage'], function (View $view) {
-            $alreadyConsentedWithCookies = Cookie::has(config('cookie-consent.cookie_name'));
-
-            $categories = collect(config('cookie-consent.cookie_categories'))
-                ->map(function ($category, $categoryKey) {
-                    $langKey = "cookieConsent::texts.manage.categories.{$categoryKey}";
-                    return array_merge($category, [
-                        "title" => trans("{$langKey}.title"),
-                        "description" => trans("{$langKey}.description"),
-                        "key" => $categoryKey,
-                    ]);
-                })
-                ->values();
-
-            $value = collect(config('cookie-consent.cookie_categories'))
-                ->map(function ($category, $categoryKey) {
-                    return (new CookieConsent())->getValueFor($categoryKey, true);
-                });
-
-            $hasManage = $categories->some(function ($category) {
-                $isRequired = $category['required'] ?? false;
-                return !$isRequired;
-            });
-
-            $view->with(compact('alreadyConsentedWithCookies', 'value', 'categories', 'hasManage'));
-        });
+        $this->app['view']->composer(['cookieConsent::index'], CookieConsentViewComposer::class);
 
         Blade::if('cookies', function ($categoryKey = null) {
             return $categoryKey
-                ? (new CookieConsent())->getValueFor($categoryKey, false)
+                ? (new CookieUtils())->getValueFor($categoryKey, 0)
                 : Cookie::has(config('cookie-consent.cookie_name'));
         });
     }
