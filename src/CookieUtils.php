@@ -1,24 +1,23 @@
 <?php
 
-
 namespace Code16\CookieConsent;
-
 
 use Illuminate\Support\Facades\Cookie;
 
-class CookieConsent
+class CookieUtils
 {
 
     public function serializeWithValues(array $values): string
     {
         $serialized = collect(config('cookie-consent.cookie_categories'))
-            ->filter(function($category, $key) {
+            ->filter(function ($category, $key) {
                 return !($category["required"] ?? false);
             })
-            ->map(function($category, $key) use ($values) {
+            ->map(function ($category, $key) use ($values) {
                 return "{$key}=" . ($values[$key] ?? true);
             })
             ->implode(",");
+
         return $serialized ?: 'all=1';
     }
 
