@@ -95,4 +95,13 @@ In the page:
 ```
 
 ### Intercept accept POST request
-If you need to add some custom logic when cookies are accepted (meaning: either when the used clicked on OK in the Bar or after setting his choices on the Modal), you can define a Middleware for the key "cookie-consent.accepted", which will be executed on the POST request.
+If you need to add some custom logic when cookies are accepted (meaning: either when the used clicked on OK in the Bar or after setting his choices on the Modal), you can define a Middleware in the cookie-consent-middleware config key, which will be executed on the POST request.
+
+Example:
+```php
+    // in config/cookie-consent.php
+    return [
+        // ...
+        'middleware' => 'cookie-consent.accepted'
+    ];
+```
