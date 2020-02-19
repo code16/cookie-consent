@@ -21,7 +21,7 @@ class CookieUtils
         return $serialized ?: 'all=1';
     }
 
-    public function getValueFor(string $categoryKey, int $default): int
+    public function getValueFor(string $categoryKey, string $default): string
     {
         if ($cookie = Cookie::get(config('cookie-consent.cookie_name'))) {
             foreach (explode(",", $cookie) as $category) {

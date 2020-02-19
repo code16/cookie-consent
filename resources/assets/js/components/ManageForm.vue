@@ -12,6 +12,7 @@
                             :disabled="isDisabled(category)"
                             :name="category.key"
                             v-model="currentValue[category.key]"
+                            true-value="1"
                             value="1"
                         >
                         <label class="custom-control-label cc-manage-form__item-label w-100" :for="checkboxKey(category)">
@@ -74,7 +75,7 @@
                 return `manage-cookies-${category.key}${key ? `-${key}` : ''}`;
             },
             isChecked(category) {
-                return this.currentValue[category.key];
+                return this.currentValue[category.key] === '1';
             },
             isDisabled(category) {
                 return category.required;
