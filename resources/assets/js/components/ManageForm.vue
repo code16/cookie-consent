@@ -3,8 +3,8 @@
         <div class="list-group list-group-flush">
             <template v-for="category in categories">
                 <div class="list-group-item px-1" :class="itemClasses(category)">
+                    <input type="hidden" :name="category.key" value="0">
                     <div class="custom-control custom-checkbox">
-                        <input type="hidden" :name="category.key" value="0">
                         <input
                             type="checkbox"
                             class="custom-control-input"
@@ -13,6 +13,7 @@
                             :name="category.key"
                             v-model="currentValue[category.key]"
                             true-value="1"
+                            :false-value="isAnonymizable(category) ? '2' : '0'"
                             value="1"
                         >
                         <label class="custom-control-label cc-manage-form__item-label w-100" :for="checkboxKey(category)">
@@ -25,16 +26,17 @@
                             <span class="cc-manage-form__item-description">{{ category.description }}</span>
                         </label>
                     </div>
-                    <template v-if="category.anonymizable && !isChecked(category)">
+                    <template v-if="isAnonymizable(category) && !isActive(category)">
                         <div class="custom-control custom-checkbox mt-3">
-                            <input type="hidden" :name="category.key" value="0">
                             <input
                                 type="checkbox"
                                 class="custom-control-input"
                                 :id="checkboxKey(category, 'anon')"
                                 :disabled="isDisabled(category)"
                                 :name="category.key"
-                                checked
+                                v-model="currentValue[category.key]"
+                                true-value="2"
+                                false-value="0"
                                 value="2"
                             >
                             <label class="custom-control-label cc-manage-form__item-label w-100" :for="checkboxKey(category, 'anon')">
@@ -74,11 +76,14 @@
             checkboxKey(category, key) {
                 return `manage-cookies-${category.key}${key ? `-${key}` : ''}`;
             },
-            isChecked(category) {
+            isActive(category) {
                 return this.currentValue[category.key] === '1';
             },
             isDisabled(category) {
                 return category.required;
+            },
+            isAnonymizable(category) {
+                return category.anonymizable;
             },
             submit() {
                 this.$refs.form.submit();
