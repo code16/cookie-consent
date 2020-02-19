@@ -6,11 +6,11 @@ return [
     'accept_button' => 'Accepter',
     'manage' => [
         'title' => 'Paramétrer mes choix concernant les cookies utilisés sur ce site',
-        'description' => 'Les cookies utilisés sur ce site sont :',
+        'description' => 'Les cookies utilisés sur ce site sont listés ci-dessous',
 
         'ok_button' => 'Enregistrer',
         'cancel_button' => 'Annuler',
-        'link_label' => 'En savoir plus',
+        'link_label' => 'en savoir plus',
 
         'required_label' => '(obligatoire)',
         'anonymize_checkbox' => 'Autoriser un cookie anonymisé',
