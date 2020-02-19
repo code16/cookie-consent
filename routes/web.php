@@ -11,4 +11,4 @@ Route::post('/cookie-consent',
             );
     })
     ->name('cookie-consent')
-    ->middleware('cookie-consent.accepted');
+    ->middleware(config('cookie-consent.middleware') ?: []);

@@ -13,5 +13,7 @@ return [
         ],
     ],
 
+    'middleware' => null,
+
     'page_url' => '/cookies',
 ];
