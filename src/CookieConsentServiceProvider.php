@@ -42,7 +42,7 @@ class CookieConsentServiceProvider extends ServiceProvider
 
         Blade::if('cookies', function ($categoryKey = null) {
             return $categoryKey
-                ? (new CookieUtils())->getValueFor($categoryKey, false)
+                ? (new CookieUtils())->getValueFor($categoryKey, 0)
                 : Cookie::has(config('cookie-consent.cookie_name'));
         });
     }

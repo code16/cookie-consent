@@ -30,7 +30,7 @@ class CookieConsentViewComposer
 
         $value = collect(config('cookie-consent.cookie_categories'))
             ->map(function ($category, $categoryKey) {
-                return (new CookieUtils())->getValueFor($categoryKey, true);
+                return (new CookieUtils())->getValueFor($categoryKey, 1);
             });
 
         $hasManage = $categories

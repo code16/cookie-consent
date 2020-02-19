@@ -21,13 +21,13 @@ class CookieUtils
         return $serialized ?: 'all=1';
     }
 
-    public function getValueFor(string $categoryKey, bool $default): bool
+    public function getValueFor(string $categoryKey, int $default): int
     {
-        if($cookie = Cookie::get(config('cookie-consent.cookie_name'))) {
-            foreach(explode(",", $cookie) as $category) {
+        if ($cookie = Cookie::get(config('cookie-consent.cookie_name'))) {
+            foreach (explode(",", $cookie) as $category) {
                 list($key, $value) = explode("=", $category);
-                if($key == $categoryKey) {
-                    return !!$value;
+                if ($key == $categoryKey) {
+                    return $value;
                 }
             }
         }
