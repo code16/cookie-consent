@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "bootstrap-vue": "^2.4.2",
+        "core-js": "^3.6.4",
         "vue": "^2.6.11"
     }
 }

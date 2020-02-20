@@ -7,6 +7,17 @@ mix.js('resources/assets/js/index.js', 'cookie-consent.js')
         terser: {
             extractComments: false,
         }
+    })
+    .babelConfig({
+        presets: [
+            [
+                '@babel/preset-env',
+                {
+                    useBuiltIns: 'usage',
+                    corejs: 3,
+                }
+            ]
+        ],
     });
 
 if(mix.inProduction()) {
