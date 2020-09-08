@@ -26,7 +26,7 @@
   }
 
   &__backdrop {
-    z-index: 1040;
+    z-index: 1039;
     opacity: .5;
     transition: opacity .15s linear;
     &.v-enter, &.v-leave-to {
