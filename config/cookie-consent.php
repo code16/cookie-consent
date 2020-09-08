@@ -16,4 +16,6 @@ return [
     'middleware' => null,
 
     'page_url' => '/cookies',
+
+    'show_backdrop' => false,
 ];

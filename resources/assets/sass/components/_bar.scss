@@ -24,4 +24,22 @@
   &.v-enter, &.v-leave-to {
     transform: translate(0, 100%);
   }
+
+  &__backdrop {
+    z-index: 1040;
+    opacity: .5;
+    transition: opacity .15s linear;
+    &.v-enter, &.v-leave-to {
+      opacity: 0;
+    }
+  }
+
+  &--modal {
+    margin-bottom: 1.25rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-top: 2rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0, .5);
+    left: calc(100vw - 100%);
+  }
 }

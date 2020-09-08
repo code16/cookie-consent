@@ -1,7 +1,9 @@
-
 <cookie-consent-bar
     endpoint="{{ route('cookie-consent') }}"
     :manage="{{ json_encode($hasManage) }}"
+    @if(config('cookie-consent.show_backdrop'))
+        backdrop
+    @endif
 >
     <template v-slot:message>
         {!! trans('cookieConsent::texts.message') !!}
