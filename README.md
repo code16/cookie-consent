@@ -5,6 +5,11 @@
 composer require code16/cookie-consent
 ```
 
+**Required**: publish assets
+```php
+php artisan vendor:publish --provider="Code16\CookieConsent\CookieConsentServiceProvider" --tag="assets"
+```
+
 You may publish the config file:
 
 ```php
