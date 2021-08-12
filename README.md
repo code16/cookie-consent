@@ -5,16 +5,21 @@
 composer require code16/cookie-consent
 ```
 
+**Required**: publish assets (add this in composer.json `post-autoload-dump` scripts)
+```php
+php artisan vendor:publish --provider='Code16\CookieConsent\CookieConsentServiceProvider' --tag=assets --force
+```
+
 You may publish the config file:
 
 ```php
-php artisan vendor:publish --provider="Code16\CookieConsent\CookieConsentServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Code16\CookieConsent\CookieConsentServiceProvider" --tag=config
 ```
 
 And the lang file:
 
 ```php
-php artisan vendor:publish --provider="Code16\CookieConsent\CookieConsentServiceProvider" --tag="lang"
+php artisan vendor:publish --provider="Code16\CookieConsent\CookieConsentServiceProvider" --tag=lang
 ```
 
 ## Usage
