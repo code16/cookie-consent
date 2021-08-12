@@ -10,10 +10,10 @@ use Illuminate\View\Component;
 
 class CookiesAllowed extends Component
 {
-    public string $category;
+    public ?string $category;
     public bool $hasConsented;
     
-    public function __construct(string $category)
+    public function __construct(?string $category = null)
     {
         $this->category = $category;
         $this->hasConsented = $category

@@ -27,7 +27,7 @@
                             <input type="hidden" name="{{ $category['key'] }}" value="0" form="manage-cookies-form">
                             <div class="list-group-item px-1">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" id="cookie-{{ $category['key'] }}"
+                                    <input class="form-check-input" name="{{ $category['key'] }}" type="checkbox" value="1" id="cookie-{{ $category['key'] }}"
                                         @if($category['required'])
                                             disabled
                                         @endif

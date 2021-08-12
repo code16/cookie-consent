@@ -37,10 +37,8 @@ class CookieUtils
     
     public static function hasConsented(string $categoryKey, bool $default = false): bool
     {
-        if(static::getValueFor($categoryKey, '0') === '1') {
-            return true;
-        }
+        $value = static::getValueFor($categoryKey, $default ? '1' : '0');
         
-        return $default;
+        return $value === '1';
     }
 }
