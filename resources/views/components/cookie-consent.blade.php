@@ -26,7 +26,5 @@
                 document.head.appendChild(script);
             }
         </script>
-    @elseif($theme === 'bootstrap-5')
-
     @endif
 @endif
