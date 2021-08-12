@@ -2,7 +2,7 @@
     'categories',
 ])
 
-<div class="modal cc-manage-modal" id="manage-cookies" tabindex="-1" aria-hidden="true" aria-labelledby="manageCookiesTitle">
+<div class="modal fade cc-manage-modal" id="manage-cookies" tabindex="-1" aria-hidden="true" aria-labelledby="manageCookiesTitle">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
