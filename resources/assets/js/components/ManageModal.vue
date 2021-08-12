@@ -88,4 +88,4 @@
 </script>
 
 <!-- not scoped as not working with modal -->
-<style src="../../sass/components/_manage-modal.scss" lang="scss"></style>
+<style src="../../scss/components/_manage-modal.scss" lang="scss"></style>

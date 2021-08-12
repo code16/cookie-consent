@@ -1,3 +1,9 @@
+@props([
+    'value',
+    'categories'
+])
+
+
 <cookie-manage-modal
     endpoint="{{ route('cookie-consent') }}"
     :value="{{ json_encode($value) }}"

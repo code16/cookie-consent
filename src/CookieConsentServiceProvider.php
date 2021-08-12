@@ -2,6 +2,8 @@
 
 namespace Code16\CookieConsent;
 
+use Code16\CookieConsent\View\Components\CookieConsent;
+use Code16\CookieConsent\View\Components\CookiesAllowed;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cookie;
@@ -30,21 +32,17 @@ class CookieConsentServiceProvider extends ServiceProvider
 
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'cookieConsent');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'cookieConsent');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'cookie-consent');
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->app->resolving(EncryptCookies::class, function (EncryptCookies $encryptCookies) {
             $encryptCookies->disableFor(config('cookie-consent.cookie_name'));
         });
-
-        $this->app['view']->composer(['cookieConsent::index'], CookieConsentViewComposer::class);
-
-        Blade::if('cookies', function ($categoryKey = null) {
-            return $categoryKey
-                ? (new CookieUtils())->getValueFor($categoryKey, '0') === '1'
-                : Cookie::has(config('cookie-consent.cookie_name'));
-        });
+        
+        Blade::componentNamespace('Code16\\CookieConsent\\View\\Components', 'cookie-consent');
+        Blade::component('cookie-consent', CookieConsent::class);
+        Blade::component('cookies-allowed', CookiesAllowed::class);
     }
 
     public function register()

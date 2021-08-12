@@ -92,4 +92,4 @@
     }
 </script>
 
-<style src="../../sass/components/_manage-form.scss" lang="scss"></style>
+<style src="../../scss/components/_manage-form.scss" lang="scss"></style>

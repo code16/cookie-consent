@@ -12,10 +12,11 @@ return [
             'required' => true,
         ],
     ],
+    
+    'has_manage_modal' => true,
 
     'middleware' => null,
 
     'page_url' => '/cookies',
-
-    'show_backdrop' => false,
+    
 ];

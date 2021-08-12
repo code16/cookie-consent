@@ -59,4 +59,4 @@
     }
 </script>
 
-<style src="../../sass/components/_bar.scss" lang="scss"></style>
+<style src="../../scss/components/_bar.scss" lang="scss"></style>

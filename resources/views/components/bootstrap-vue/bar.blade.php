@@ -1,7 +1,12 @@
+@props([
+    'hasManage',
+    'backdrop',
+])
+
 <cookie-consent-bar
     endpoint="{{ route('cookie-consent') }}"
     :manage="{{ json_encode($hasManage) }}"
-    @if(config('cookie-consent.show_backdrop'))
+    @if($backdrop)
         backdrop
     @endif
 >
