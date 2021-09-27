@@ -6,7 +6,7 @@
 @if($backdrop)
     <div class="modal-backdrop cc-cookie-bar__backdrop"></div>
 @endif
-<div class="cc-cookie-bar cc-slide-up {{ $backdrop ? 'cc-cookie-bar--modal container' : '' }}">
+<div id="cc-bar" class="cc-cookie-bar cc-slide-up {{ $backdrop ? 'cc-cookie-bar--modal container' : '' }}">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md">
@@ -22,7 +22,7 @@
                         </div>
                     @endif
                     <div class="col-auto">
-                        <form method="post" action="{{ route('cookie-consent') }}" data-cc-form>
+                        <form method="post" action="{{ route('cookie-consent') }}">
                             <button type="submit" class="btn btn-primary btn-lg cc-cookie-bar__btn">
                                 {!! trans('cookieConsent::texts.accept_button') !!}
                             </button>

@@ -11,20 +11,14 @@ use Illuminate\View\Component;
 class CookiesAllowed extends Component
 {
     public ?string $category;
-    public bool $hasConsented;
     
     public function __construct(?string $category = null)
     {
         $this->category = $category;
-        $this->hasConsented = $category
-            ? CookieUtils::hasConsented($category)
-            : Cookie::has(config('cookie-consent.cookie_name'));
     }
     
     public function render()
     {
-        return $this->hasConsented
-            ? '{{ $slot }}'
-            : null;
+        return view('cookie-consent::components.cookies-allowed');
     }
 }

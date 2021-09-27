@@ -51,7 +51,6 @@
         },
         props: {
             endpoint: String,
-            value: Object,
             categories: Array,
             title: String,
             requiredLabel: String,
@@ -60,6 +59,7 @@
         data() {
             return {
                 visible: false,
+                value: CookieConsent.getValue(),
             }
         },
         methods: {
@@ -81,6 +81,9 @@
             this.init();
             window.addEventListener('hashchange', this.init);
         },
+        mounted() {
+            CookieConsent.setupModalForm(this.$refs.form.$el);
+        },
         destroyed() {
             document.removeEventListener('hashchange', this.init);
         },
@@ -88,4 +91,4 @@
 </script>
 
 <!-- not scoped as not working with modal -->
-<style src="../../scss/components/_manage-modal.scss" lang="scss"></style>
+<style src="../../../scss/components/_manage-modal.scss" lang="scss"></style>

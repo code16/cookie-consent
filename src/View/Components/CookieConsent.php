@@ -10,7 +10,6 @@ use Illuminate\View\Component;
 
 class CookieConsent extends Component
 {
-    public bool $alreadyConsentedWithCookies;
     public bool $hasManage;
     public string $theme;
     public bool $backdrop;
@@ -19,7 +18,6 @@ class CookieConsent extends Component
         string $theme,
         bool $backdrop = false
     ) {
-        $this->alreadyConsentedWithCookies = Cookie::has(config('cookie-consent.cookie_name'));
         $this->hasManage = config('cookie-consent.has_manage_modal');
         $this->theme = $theme;
         $this->backdrop = $backdrop;

@@ -53,10 +53,13 @@
                 }
             }
         },
+        mounted() {
+            CookieConsent.setupBar(this.$el);
+        },
         directives: {
             'b-modal': VBModal,
         }
     }
 </script>
 
-<style src="../../scss/components/_bar.scss" lang="scss"></style>
+<style src="../../../scss/components/_bar.scss" lang="scss"></style>

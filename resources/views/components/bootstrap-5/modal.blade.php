@@ -31,7 +31,7 @@
                                         @if($category['required'])
                                             disabled
                                         @endif
-                                        @if($category['required'] || \Code16\CookieConsent\CookieUtils::hasConsented($category['key'], true))
+                                        @if($category['required'])
                                             checked
                                         @endif
                                         form="manage-cookies-form"
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form id="manage-cookies-form" method="post" action="{{ route('cookie-consent') }}" data-cc-form>
+                <form id="manage-cookies-form" method="post" action="{{ route('cookie-consent') }}">
                     <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
                         {!! trans('cookieConsent::texts.manage.ok_button') !!}
                     </button>

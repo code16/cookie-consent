@@ -8,6 +8,5 @@
     :theme="$theme"
     :attributes="$attributes->merge([
         'categories' => $categories,
-        'value' => $value,
     ])"
 />

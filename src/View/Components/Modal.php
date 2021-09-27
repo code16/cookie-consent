@@ -11,13 +11,11 @@ use Illuminate\View\Component;
 class Modal extends Component
 {
     public Collection $categories;
-    public Collection $value;
     public string $theme = '';
     
     public function __construct(string $theme)
     {
         $this->categories = $this->getCategories();
-        $this->value = $this->getValue();
         $this->theme = $theme;
     }
     
@@ -34,14 +32,6 @@ class Modal extends Component
                 ]);
             })
             ->values();
-    }
-    
-    protected function getValue(): Collection
-    {
-        return collect(config('cookie-consent.cookie_categories'))
-            ->map(function ($category, $categoryKey) {
-                return CookieUtils::getValueFor($categoryKey, '1');
-            });
     }
     
     public function render()
