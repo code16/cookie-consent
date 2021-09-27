@@ -1,5 +1,5 @@
 .cc-cookie-bar {
-  display: block;
+  display: none;
   overflow: hidden;
   box-sizing: border-box;
   z-index: 1040;
@@ -23,6 +23,10 @@
 
   &.v-enter, &.v-leave-to {
     transform: translate(0, 100%);
+  }
+
+  .cc-visible & {
+     display: block;
   }
 
   &__backdrop {

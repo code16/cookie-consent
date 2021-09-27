@@ -56,8 +56,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form id="manage-cookies-form" method="post" action="{{ route('cookie-consent') }}">
-                    <button type="submit" class="btn btn-primary">
+                <form id="manage-cookies-form" method="post" action="{{ route('cookie-consent') }}" data-cc-form>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
                         {!! trans('cookieConsent::texts.manage.ok_button') !!}
                     </button>
                 </form>

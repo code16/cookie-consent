@@ -19,4 +19,8 @@ return [
 
     'page_url' => '/cookies',
     
+    'xhr' => false,
+    
+    'xhr_script_file' => '/js/cookies.js',
+    
 ];

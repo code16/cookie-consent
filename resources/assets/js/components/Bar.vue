@@ -2,11 +2,11 @@
     <div>
         <transition appear>
             <template v-if="backdrop">
-                <div class="modal-backdrop cc-cookie-bar__backdrop"></div>
+                <div class="modal-backdrop cc-cookie-bar__backdrop d-block"></div>
             </template>
         </transition>
         <transition appear>
-            <div class="cc-cookie-bar" :class="classes">
+            <div class="cc-cookie-bar d-block" :class="classes">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md">

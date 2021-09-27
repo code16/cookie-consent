@@ -22,7 +22,7 @@
                         </div>
                     @endif
                     <div class="col-auto">
-                        <form method="post" action="{{ route('cookie-consent') }}">
+                        <form method="post" action="{{ route('cookie-consent') }}" data-cc-form>
                             <button type="submit" class="btn btn-primary btn-lg cc-cookie-bar__btn">
                                 {!! trans('cookieConsent::texts.accept_button') !!}
                             </button>
