@@ -6,7 +6,7 @@ Route::post('/cookie-consent',
             ->back()
             ->cookie(
                 config('cookie-consent.cookie_name'),
-                (new \Code16\CookieConsent\CookieUtils())->serializeWithValues(request()->all()),
+                \Code16\CookieConsent\CookieUtils::serializeWithValues(request()->all()),
                 config('cookie-consent.cookie_lifetime_in_minutes')
             );
     })

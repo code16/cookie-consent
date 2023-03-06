@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 class CookieUtils
 {
 
-    public function serializeWithValues(array $values): string
+    public static function serializeWithValues(array $values): string
     {
         $serialized = collect(config('cookie-consent.cookie_categories'))
             ->filter(function ($category, $key) {
@@ -21,7 +21,7 @@ class CookieUtils
         return $serialized ?: 'all=1';
     }
 
-    public function getValueFor(string $categoryKey, string $default): string
+    public static function getValueFor(string $categoryKey, string $default): string
     {
         if ($cookie = Cookie::get(config('cookie-consent.cookie_name'))) {
             foreach (explode(",", $cookie) as $category) {
@@ -33,5 +33,12 @@ class CookieUtils
         }
 
         return $default;
+    }
+    
+    public static function hasConsented(string $categoryKey, bool $default = false): bool
+    {
+        $value = static::getValueFor($categoryKey, $default ? '1' : '0');
+        
+        return $value === '1';
     }
 }
